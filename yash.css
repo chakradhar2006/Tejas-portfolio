@@ -1,0 +1,528 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* space for fixed navbar */
+}
+
+/* Scroll reveal base state */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out, filter 0.7s ease-out;
+}
+
+/* When element becomes visible */
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Stack Navbar Links Vertically */
+    .Navbars {
+        flex-direction: column;
+        padding: 15px 20px;
+        height: auto;
+    }
+
+    .nav-links {
+        flex-direction: column; /* Links go one under another */
+        gap: 10px;
+        margin-top: 15px;
+        text-align: center;
+        padding: 0;
+    }
+
+    /* 2. Fix the Hero Section (Image and Text) */
+    .bigger-container-Tejas .container {
+        flex-direction: column-reverse; /* Put image on top, text below */
+        text-align: center;
+    }
+
+    .images {
+        float: none; /* Remove align="right" behavior */
+        display: block;
+        margin: 0 auto 20px; /* Center image with margin at bottom */
+        width: 80%; /* Make image responsive */
+        max-width: 300px;
+    }
+
+    /* 3. Adjust Fonts for smaller screens */
+    .Name {
+        font-size: 2rem;
+    }
+
+    /* 4. Make Skills Buttons fit nicely */
+    .buttons {
+        width: 100%; /* Buttons take full width on mobile */
+        margin-bottom: 10px;
+        padding: 12px; /* Easier to tap with fingers */
+    }
+
+    /* 5. Center the Summary text */
+    .detail {
+        padding: 0 10px;
+        text-align: left;
+    }
+}
+@media screen and (max-width: 768px) {
+    .images {
+        /* 1. Force a square shape (Necessary for a perfect circle) */
+        width: 180px !important; 
+        height: 180px !important;
+
+        /* 2. Make it a circle */
+        border-radius: 50% !important;
+
+        /* 3. Prevent the face/content from stretching */
+        object-fit: cover; 
+
+        /* 4. Center it on the mobile screen */
+        display: block;
+        margin: 20px auto;
+
+        /* 5. Kill the align="right" from your HTML */
+        float: none !important;
+        
+        /* Optional: add a thin border to see the circle clearly on black */
+        border: 2px solid #3f3f46;
+    }
+}
+
+  
+
+
+
+@keyframes wave-mh5338{
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(15deg); }
+  40% { transform: rotate(-10deg); }
+  60% { transform: rotate(15deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+
+.Navbars {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;           
+    padding: 10px 40px;
+    
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    backdrop-filter: blur(10px);          /* Blurs content BEHIND the bar */
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Fix to top */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Keeps it above other content */
+    box-sizing: border-box; /* Prevents padding from breaking the 100% width */
+}
+
+    
+
+
+
+/* Give the side elements equal weight so they push the middle to the center */
+.logo, .symbol {
+    
+    display:flex;
+}
+
+/* Ensure the logo stays on the left and symbol on the right within their flex areas */
+.logo {
+    
+    justify-content: flex-start;
+}
+
+.symbol {
+    
+    justify-content: flex-end;
+    font-size: 24px;
+    color: white; /* Added for visibility */
+}
+
+/* The middle section will now be forced to the absolute center */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    flex: 0; /* Prevents it from growing, keeps it centered */
+    white-space: nowrap; /* Keeps links on one line */
+    justify-content: center;
+    
+    align-items: center;
+}
+.nav-links a {
+    color: gray;
+    text-decoration: none;
+    padding: 5px 15px;
+    border: 2px solid transparent; /* Reserve space */
+    transition: all 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+    background-color: var(--hover-bg, #333); /* Uses your variable! */
+    border-radius: 100px;
+}
+.symbol span svg{
+    width: 18;
+    height: 18;
+    fill: none;
+    stroke: rgb(41, 141, 228);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.bigger-container-Tejas{
+    display:grid;
+    gap: 40px;
+    align-items: center;
+    position:relative;
+    z-index:0.5;
+}
+.bigger{
+    width:100%;
+    max-width:1120px;
+    margin: 0 auto;
+    padding:0 24px;
+}
+.text-sub-container span {
+    /* 1. Make the span act like a button/link */
+    display: inline-flex;
+    align-items: center;
+    
+    margin-top: 80px;
+    margin-left: 79px;
+    cursor: pointer;
+    
+    /* 2. Initial Border (Same width as hover to prevent jumping) */
+    border: 2px solid #555; 
+    border-radius: 100px;      /* Matches common navbar styling */
+    background-color: transparent;
+    transition: all 0.3s ease;
+    padding: 7px 15px;
+    /* 3. Ensures bg doesn't bleed under the border area */
+    background-clip: padding-box; 
+}
+
+.text-sub-container span:hover {
+    /* 4. Swap border color for background color */
+    border-color: transparent; 
+     /* Use your preferred navbar hover color */
+    color:white;               /* Change text color for contrast if needed */
+}
+/* 1. Ensure the hand can be transformed */
+.hand {
+    display: inline-block; 
+    transform: rotate(0deg); /* Your initial static rotation */
+    
+}
+
+/* 2. Trigger the animation on hover */
+.hand:hover {
+    /* [animation-name] [duration] [timing-function] [iteration-count] */
+    animation: wave-mh5338 1s ease-in-out infinite;
+}
+.Name{
+    font-size: xxx-large;
+        margin: 59px 19px;
+}
+#Career{
+    font-size:x-large;
+    margin: 40px 20px
+}
+#special{
+    font-size: larger;
+    margin: -11px 20px;
+    font-style: oblique;
+    color: gray
+}
+.images{
+    width: 23vw;
+    align-items: left;
+    height: 44vh;
+    border: 2px solid black;
+    border-radius: 165px;
+   
+}
+
+.hand-text{
+    margin:12px;
+}
+.content{
+        margin: 30px 21px;
+}
+.summary{
+        font-size: xxx-large;
+}
+.detail{
+        font-size: larger;
+    font-style: oblique;
+    color: gray;
+    margin: 28px 10px;
+    padding: 10px;
+}
+.Technical{
+    font-size: xxx-large;
+    padding: 10px 20px;
+}
+.buttons{
+    display: flex;
+    background-color: rgb(45 39 39 / 38%);
+    color: #8e8b8b;
+    border:2px solid black;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: initial;
+    padding:13px 15px;
+    
+                 /* Activates flexbox */
+    flex-direction: row;       /* Standard horizontal layout (default) */
+    gap: 10px;                 /* Adds space between the buttons */
+    justify-content: center;   /* Centers the group of buttons horizontally */
+    align-items: center;       /* Aligns them vertically if heights differ */
+    margin: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.buttons:hover{
+    
+    transform: scale(1.05); /* Enlarges by 5% */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Adds a shadow underneath */
+    color: #0875a4; /* Optional: brighten text on hover */
+}
+.container3{
+    font-size: x-large;
+    padding: 10px 20px;
+}
+.container3 p{
+        font-size: 20px;
+}
+.project{
+    font-size: larger;
+    font-style: oblique;
+    color: gray;
+    margin: 28px 10px;
+    padding: 10px;
+}
+.connect-link{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+
+}
+  .card {
+    position: relative;
+    /* Remove var() from around the rgba values */
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    
+    /* Remove var() from the measurements */
+    border-radius: 28px;
+    padding: 32px;
+    
+    /* Give backdrop-filter a real value, e.g., 10px */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    box-shadow: none;
+    overflow: hidden;
+
+    /* Remove var() from the timing values */
+    transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+    width: 100%;
+    height: 12vh;
+
+  
+  background-color:#0f0f10;
+  
+  /* 1. Define the transition on the BASE class */
+  /* Combine properties with a comma, no extra parentheses */
+  transition: transform .2s cubic-bezier(.4, 0, .2, 1), background-color .2s cubic-bezier(.4, 0, .2, 1);
+  
+  /* 2. Set an initial transform so the browser knows where to start */
+  transform: scale(1); 
+}
+
+.card:hover {
+  /* 3. Define the changes that happen on hover */
+  background-color: #3f3f46;
+  transform: scale(1.1) translateY(-5px); /* Grows and moves up slightly */
+}
+
+
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: #0732d0;
+    color: #fefefe;
+    flex-shrink: 0;
+}
+.linkinfo{
+    flex:1;
+}
+.link-name{
+    display: block;
+    font-size: .95rem;
+    font-weight: 600;
+    color: white;
+}
+.link-handle{
+ font-size: .82rem;
+    color: #71717a;
+}
+/* Base state */
+.link-arrow { 
+  color: #71717a; 
+  transform: translateX(0); /* Define starting position */
+  transition: transform .2s ease, color .2s ease; 
+}
+
+/* Hover state - the transition needs this to work! */
+.link-arrow:hover { 
+  color: #ffffffff; 
+  transform: translateX(5px); /* Moves the arrow 5px to the right */
+}
+.contactinfo{
+    
+    display: flex;
+    background-color: rgb(45 39 39 / 38%);
+    color: #8e8b8b;
+    border:2px solid black;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: initial;
+    padding:13px 15px;
+    
+                 /* Activates flexbox */
+    flex-direction: row;       /* Standard horizontal layout (default) */
+    gap: 10px;                 /* Adds space between the buttons */
+    justify-content: center;   /* Centers the group of buttons horizontally */
+    align-items: center;       /* Aligns them vertically if heights differ */
+    margin: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+.mailinfo{
+    
+    display: flex;
+    background-color: rgb(45 39 39 / 38%);
+    color: #8e8b8b;
+    border:2px solid black;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: initial;
+    padding:13px 15px;
+    
+                 /* Activates flexbox */
+    flex-direction: row;       /* Standard horizontal layout (default) */
+    gap: 10px;                 /* Adds space between the buttons */
+    justify-content: center;   /* Centers the group of buttons horizontally */
+    align-items: center;       /* Aligns them vertically if heights differ */
+    margin: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+.contactinfo:hover{
+    
+    transform: scale(1.05); /* Enlarges by 5% */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Adds a shadow underneath */
+    color: #0875a4; /* Optional: brighten text on hover */
+}
+.mailinfo:hover{
+    
+    transform: scale(1.05); /* Enlarges by 5% */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Adds a shadow underneath */
+    color: #0875a4; /* Optional: brighten text on hover */
+}
+/* Contact form styling */
+.contact-form {
+    max-width: 480px;
+    margin: 20px 24px 0;
+    padding: 24px 24px 20px;
+    border-radius: 24px;
+    background: rgba(15, 15, 16, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1px solid #27272a;
+    background-color: #0f0f10;
+    color: #e5e5e5;
+    font-size: 0.95rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #71717a;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #0875a4;
+    box-shadow: 0 0 0 1px rgba(8, 117, 164, 0.5);
+}
+
+.contact-form button[type="submit"] {
+    margin-top: 4px;
+    align-self: flex-start;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: #0875a4;
+    color: #f9fafb;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+    background: #0ea5e9;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+#form-status {
+    min-height: 18px;
+    font-size: 0.85rem;
+    color: #22c55e; /* default success color; errors are set via JS text */
+}
+
+@media screen and (max-width: 768px) {
+    .connect-link {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .contact-form {
+        margin: 20px 16px 0;
+    }
+}
